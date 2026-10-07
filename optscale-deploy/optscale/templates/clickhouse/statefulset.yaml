@@ -22,6 +22,7 @@ spec:
         app: {{ .Values.clickhouse.name }}
         release: {{ .Release.Name }}
     spec:
+{{ include "image.pullSecrets" $ | indent 6 }}
 {{- if .Values.elk.enabled }}
       initContainers:
 {{ include "wait_for_elk" . | indent 6 }}
